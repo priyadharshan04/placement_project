@@ -1,4 +1,4 @@
-import DriveList from "./components/drive.component.jsx"
+// import DriveList from "./components/drive.component.jsx"
 import AddDrive from "./components/drive.admin.jsx"
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <DriveList/>
+      {/* <DriveList/> */}
       <AddDrive/>
     </>
   )

@@ -1,48 +1,45 @@
 
-import PropTypes from 'prop-types'; // Import PropTypes for validation
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// Destructure props directly in the function signature
-const Input = ({ placeholder, type, value, onChange, required, label }) => {
+const Input = (props) => {
   return (
     <StyledWrapper>
       <div className="brutalist-container">
-        <input 
-          placeholder={placeholder} // Default placeholder
-          className="brutalist-input smooth-type" 
-          type={type } // Default type is "text"
-          value={value} // Bind the value prop
-          onChange={onChange} // Bind the onChange prop
-          required={required} // Optional: Make input required based on props
+        <input
+          placeholder={props.placeholder}
+          className="brutalist-input smooth-type"
+          type={props.type}
+          id={props.id}
+          value={props.value}
+          onChange={props.onChange}
         />
-        <label className="brutalist-label">{label }</label>
+        <label className="brutalist-label">{props.label}</label>
       </div>
     </StyledWrapper>
   );
 };
 
-// PropTypes for validation
+// Define prop types
 Input.propTypes = {
-  placeholder: PropTypes.string,
-  type: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool,
-  label: PropTypes.string,
+  type: PropTypes.string.isRequired, // Type of input (e.g., text, url, etc.)
+  id: PropTypes.string,             // HTML id for the input
+  value: PropTypes.string,          // The current value of the input
+  onChange: PropTypes.func.isRequired, // Handler for the onChange event
+  placeholder: PropTypes.string,    // Placeholder text for the input
+  label: PropTypes.string           // Label text displayed above the input
 };
 
-// Default values for props (in case they are not passed)
+// Define default props
 Input.defaultProps = {
-  placeholder: "TYPE HERE",
-  type: "text",
-  required: false,
-  
+  type: 'text',                     // Default input type is text
+  placeholder: 'Enter value...',    // Default placeholder text
+  label: ''                         // No label by default
 };
-
 const StyledWrapper = styled.div`
   .brutalist-container {
     position: relative;
-  
+
     font-family: monospace;
   }
 

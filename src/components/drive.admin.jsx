@@ -1,6 +1,8 @@
 import  { useState } from "react";
 import axios from "axios";
 import "./drive.admin.add.css"; // Importing the CSS file
+import Input from "../../styled_components/input";
+import Button from "../../styled_components/button.styled-component";
 
 
 const AddDrive = () => {
@@ -41,45 +43,48 @@ const AddDrive = () => {
       {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit} className="drive-form">
         <div className="form-group">
-          <label htmlFor="name" className="form-label">Name:</label>
-          <input
+         
+          <Input
             type="text"
             id="name"
             placeholder="NAME"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="form-input  smooth-type"
+            label="NAME"
+           
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="time" className="form-label">Time:</label>
-          <input
+         
+          <Input
             type="datetime-local"
             id="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="form-input  smooth-type"
+             label="TIME"
+          
             required
             
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="image" className="form-label">Image URL:</label>
-          <input
+         
+          <Input
             type="url"
             id="image"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-            className="form-input  smooth-type"
+             label="IMAGE-URL"
+           
             required
             placeholder="http://..."
           />
         </div>
 
-        <button type="submit" className="submit-btn">ADD</button>
+        <Button type="submit" name="ADD"/>
       </form>
     </div>
   );

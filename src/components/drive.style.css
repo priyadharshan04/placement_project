@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bungee+Tint&family=Genos:wght@100&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=New+Amsterdam&family=Orbitron:wght@700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Passion+One&family=Protest+Guerrilla&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bungee+Tint&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=New+Amsterdam&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Guerrilla&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bungee+Tint&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=New+Amsterdam&family=Orbitron:wght@700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Passion+One&family=Protest+Guerrilla&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bungee+Tint&family=Genos:wght@100&family=Karla:ital,wght@0,200..800;1,200..800&family=Lilita+One&family=New+Amsterdam&family=Orbitron:wght@700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Passion+One&family=Pridi:wght@200;300;400;500;600;700&family=Protest+Guerrilla&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 .drive-container {
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
@@ -12,10 +9,9 @@
   
   h2 {
     font-size: 24px;
-    font-family: "Roboto Condensed", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
+    font-family: "Anton", serif;
+  font-weight: 400;
+  font-style: normal;
   }
   
   .drive-list {
@@ -173,5 +169,15 @@ p{
   font-family: "Genos", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
+  font-style: normal;
+}
+.drive-time{
+  font-family: "Pridi", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.drive-name{
+  font-family: "Pridi", serif;
+  font-weight: 400;
   font-style: normal;
 }

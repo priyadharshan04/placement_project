@@ -29,10 +29,6 @@ Button.propTypes = {
   
 };
 
-// Define default props
-Button.defaultProps = {
-  type: 'button', // Default button type is "button"
-};
 
 const StyledWrapper = styled.div`
   .Btn {

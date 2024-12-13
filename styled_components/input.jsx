@@ -33,11 +33,7 @@ Input.propTypes = {
 };
 
 // Define default props
-Input.defaultProps = {
-  type: 'text',                     // Default input type is text
-  placeholder: 'Enter value...',    // Default placeholder text
-  label: ''                         // No label by default
-};
+
 const StyledWrapper = styled.div`
   .brutalist-container {
     position: relative;

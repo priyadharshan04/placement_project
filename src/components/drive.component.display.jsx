@@ -57,8 +57,8 @@ const DriveList = () => {
               alt={drive.name || "Company Logo"}
             />
             <div className="drive-display-details">
-              <h3>{drive.name}</h3>
-              <p>{new Date(drive.time).toLocaleString()}</p>
+              <h3 className="drive-name">{drive.name}</h3>
+              <p className="drive-time">{new Date(drive.time).toLocaleString()}</p>
               <button
                 className="drive-list-button"
                 onClick={() => openModal(drive)} // Open modal with drive details

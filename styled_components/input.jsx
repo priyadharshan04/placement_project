@@ -13,6 +13,7 @@ const Input = (props) => {
           id={props.id}
           value={props.value}
           onChange={props.onChange}
+          name={props.name1}
         />
         <label className="brutalist-label">{props.label}</label>
       </div>
@@ -27,7 +28,8 @@ Input.propTypes = {
   value: PropTypes.string,          // The current value of the input
   onChange: PropTypes.func.isRequired, // Handler for the onChange event
   placeholder: PropTypes.string,    // Placeholder text for the input
-  label: PropTypes.string           // Label text displayed above the input
+  label: PropTypes.string ,
+  name1:    PropTypes.string       // Label text displayed above the input
 };
 
 // Define default props
@@ -45,8 +47,8 @@ const StyledWrapper = styled.div`
 
   .brutalist-input {
     width: 100%;
-    padding: 15px;
-    font-size: 18px;
+    padding: 6px;
+    font-size: 15px;
     font-weight: bold;
     color: #000;
     background-color: #fff;
@@ -217,6 +219,9 @@ const StyledWrapper = styled.div`
     50% {
       border-color: #4a90e2;
     }
+      
+      
   }`;
+  
 
 export default Input;

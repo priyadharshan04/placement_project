@@ -1,14 +1,16 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./drive.admin.add.css"; // Importing the CSS file
 import Input from "../../styled_components/input";
 import Button from "../../styled_components/button.styled-component";
 
-
 const AddDrive = () => {
   const [name, setName] = useState(""); // State for the drive name
   const [time, setTime] = useState(""); // State for the drive time
   const [image, setImage] = useState(""); // State for the image URL
+  const [description, setDescription] = useState(""); // State for the description
+  const [eligibility, setEligibility] = useState(""); // State for eligibility
+  const [requirements, setRequirements] = useState(""); // State for requirements
   const [message, setMessage] = useState(null); // State to show success or error message
 
   // Handler for form submission
@@ -21,6 +23,9 @@ const AddDrive = () => {
         name,
         time,
         image,
+        description,
+        eligibility,
+        requirements,
       });
 
       if (response.status === 201) {
@@ -29,11 +34,14 @@ const AddDrive = () => {
         setName("");
         setTime("");
         setImage("");
+        setDescription("");
+        setEligibility("");
+        setRequirements("");
       } else {
         setMessage("Failed to add the drive.");
       }
     } catch (err) {
-      setMessage(`Error: Could not add drive.${err}`);
+      setMessage(`Error: Could not add drive. ${err.message}`);
     }
   };
 
@@ -43,7 +51,6 @@ const AddDrive = () => {
       {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit} className="drive-form">
         <div className="form-group">
-         
           <Input
             type="text"
             id="name"
@@ -51,40 +58,70 @@ const AddDrive = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             label="NAME"
-           
             required
           />
         </div>
 
         <div className="form-group">
-         
-          <Input
+          <input className="form-input"
             type="datetime-local"
             id="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-             label="TIME"
-          
+            label="TIME"
             required
-            
           />
         </div>
 
         <div className="form-group">
-         
           <Input
             type="url"
             id="image"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-             label="IMAGE-URL"
-           
+            label="IMAGE-URL"
             required
             placeholder="http://..."
           />
         </div>
 
-        <Button type="submit" name="ADD"/>
+        <div className="form-group">
+          <Input
+            type="text"
+            id="description"
+            placeholder="DESCRIPTION"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            label="DESCRIPTION"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <Input
+            type="text"
+            id="eligibility"
+            placeholder="ELIGIBILITY"
+            value={eligibility}
+            onChange={(e) => setEligibility(e.target.value)}
+            label="ELIGIBILITY"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <Input
+            type="text"
+            id="requirements"
+            placeholder="REQUIREMENTS"
+            value={requirements}
+            onChange={(e) => setRequirements(e.target.value)}
+            label="REQUIREMENTS"
+            required
+          />
+        </div>
+
+        <Button type="submit" name="ADD" />
       </form>
     </div>
   );

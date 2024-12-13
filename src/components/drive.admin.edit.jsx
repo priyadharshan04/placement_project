@@ -6,14 +6,17 @@ import "./drive.edit.css";
 
 const FetchDrive = () => {
   const [name, setName] = useState(""); // State for the drive name
-  const [isdrive,setisdrive]=useState(false);
+  const [isdrive, setisdrive] = useState(false);
   const [drive, setDrive] = useState(null); // State for the drive data
   const [message, setMessage] = useState(null); // State to show success or error message
   const [isEditing, setIsEditing] = useState(false); // State for toggling the edit mode
   const [editedDrive, setEditedDrive] = useState({
     name: "",
     time: "",
-    image: "" // Removed description field
+    image: "",
+    description: "",
+    eligibility: "",
+    requirements: "",
   }); // State to store edited drive data
 
   // Fetch drive data from the server
@@ -21,11 +24,8 @@ const FetchDrive = () => {
     try {
       const response = await axios.get(`http://localhost:5000/api/drives/name/${name}`);
       setDrive(response.data);
-      setisdrive(true) // Set the fetched drive data
+      setisdrive(true); // Set the fetched drive data
       setMessage(null);
-
-      // Format the time into YYYY-MM-DDTHH:mm for datetime-local input
-     
     } catch (err) {
       setDrive(null);
       setMessage(`Error: Could not fetch drive. ${err.response?.data?.message || err.message}`);
@@ -47,8 +47,11 @@ const FetchDrive = () => {
     setIsEditing(true);
     setEditedDrive({
       name: drive.name,
-      time: drive.time,
-      image: drive.image // No description here
+      time: new Date(drive.time).toISOString().slice(0, 16), // Format for datetime-local
+      image: drive.image,
+      description: drive.description,
+      eligibility: drive.eligibility,
+      requirements: drive.requirements,
     });
   };
 
@@ -65,8 +68,7 @@ const FetchDrive = () => {
       const response = await axios.put(`http://localhost:5000/api/drives/${drive._id}`, editedDrive);
       setDrive(response.data); // Update the drive with the edited data
       setIsEditing(false); // Exit edit mode
-      setisdrive(false)
-
+      setisdrive(false);
       setMessage("Drive details updated successfully!");
     } catch (err) {
       setMessage(`Error: Could not update drive. ${err.response?.data?.message || err.message}`);
@@ -93,26 +95,29 @@ const FetchDrive = () => {
         </div>
       </form>
 
-      {drive   && isdrive && (
+      {drive && isdrive && (
         <div className="drive-details">
+          <div className="drive-detail-update">
           <h3>Drive Details</h3>
           <p><strong>Name:</strong> {drive.name}</p>
           <p><strong>Time:</strong> {new Date(drive.time).toLocaleString()}</p>
-          <p><strong>Image:</strong> <img src={drive.image} alt={drive.name} className="drive-image"   style={{ width: '90px', height: 'inherit' }}/></p>
-          
+          <p><strong>Image:</strong> <img src={drive.image} alt={drive.name} className="drive-image" style={{ width: '90px', height: 'inherit' }} /></p>
+          <p><strong>Description:</strong> {drive.description}</p>
+          <p><strong>Eligibility:</strong> {drive.eligibility}</p>
+          <p><strong>Requirements:</strong> {drive.requirements}</p>
+          </div>
           {/* Edit Button */}
           {!isEditing && <Button type="button" name="Edit" onClick={handleEdit} />}
-          
+
           {/* Edit Form */}
           {isEditing && (
             <form onSubmit={handleUpdate} className="edit-form">
               <div className="form-group">
-                
-                <input
+                <Input
                   type="text"
                   id="name"
-                  name="name"
-                  placeholder="NAME"
+                  name1="name"
+                  placeholder="Name"
                   value={editedDrive.name}
                   onChange={handleEditChange}
                   className="form-input"
@@ -121,34 +126,73 @@ const FetchDrive = () => {
                 />
               </div>
               <div className="form-group">
-              
+             
                 <input
                   type="datetime-local"
                   id="time"
-                  placeholder="TIME"
                   name="time"
+                  placeholder="Time"
                   value={editedDrive.time}
                   onChange={handleEditChange}
                   className="form-input"
                   required
-                   label="TIME:"
+                  label="Time:"
                 />
               </div>
               <div className="form-group">
-                
-                <input
+                <Input
                   type="url"
-                  placeholder="http://...."
                   id="image"
-                  name="image"
+                  name1="image"
+                  placeholder="Image URL"
                   value={editedDrive.image}
                   onChange={handleEditChange}
                   className="form-input"
                   required
-                   label="IMAGE-url:"
+                  label="Image URL:"
                 />
               </div>
-              <Button type="submit" name="Update" />
+              <div className="form-group">
+                <Input
+                  type="text"
+                  id="description"
+                  name1="description"
+                  placeholder="Description"
+                  value={editedDrive.description}
+                  onChange={handleEditChange}
+                  className="form-input"
+                  required
+                  label="Description:"
+                />
+              </div>
+              <div className="form-group">
+                <Input
+                  type="text"
+                  id="eligibility"
+                  name1="eligibility"
+                  placeholder="Eligibility"
+                  value={editedDrive.eligibility}
+                  onChange={handleEditChange}
+                  className="form-input"
+                  required
+                  label="Eligibility:"
+                />
+              </div>
+              <div className="form-group">
+                <Input
+                  type="text"
+                  id="requirements"
+                  name1="requirements"
+                  placeholder="Requirements"
+                  value={editedDrive.requirements}
+                  onChange={handleEditChange}
+                  className="form-input"
+                  required
+                  label="Requirements:"
+                />
+               
+              </div>
+              <Button type="submit" name="Update"/>
             </form>
           )}
         </div>

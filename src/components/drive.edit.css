@@ -2,16 +2,20 @@
 
 
 .drive-fetch-container{
-    width: 100%;
-    max-width: 600px;
-    padding: 50px;
+    width: 95%;
+  
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap:30px;
-  
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+   
+}
+.drive-fetch-container:hover{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
 
 .title,h3{
@@ -27,25 +31,28 @@
     font-family: "Bungee Tint", serif;
   font-weight: 400;
   font-style: normal;
+  margin:0;
 
   }
 
   .drive-details{
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    padding: 10px;
-    position: relative;
-    height: 340px;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    
     
   }
-  .drive-details:hover{
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  .drive-detail-update{
+    width: 50%;
   }
+
 
   .drive-details p{
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;
+    font-weight: 200;
     font-style: normal
     
   }
@@ -77,12 +84,27 @@
    
 }
 .edit-form{
-    position: absolute;
-    right: 0;
-    top:4em;
+  display: flex;
+  flex-direction: column;
+  gap:30px;
+  
     border-radius: 20px;
     width: 300px;
-    height: 280px;
+    padding: 10px;
     
     
+}
+.drive-detail-update strong{
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal
+  
+
+}
+.drive-detail-update p{
+  font-family: "Genos", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }

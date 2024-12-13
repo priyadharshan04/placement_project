@@ -1,14 +1,17 @@
-// import DriveList from "./components/drive.component.jsx"
-// import AddDrive from "./components/drive.admin.jsx"
+import DriveList from "./components/drive.component.display.jsx"
+import AddDrive from "./components/drive.admin.jsx"
 import UpdateDrive from "./components/drive.admin.edit.jsx"
+import DeleteDrive from "./components/drive.delete.component.jsx"
 function App() {
  
 
   return (
     <>
-      {/* <DriveList/>
-      <AddDrive/> */}
+    <DeleteDrive/>
+      <DriveList/>
+      <AddDrive/>
       <UpdateDrive/>
+      
     </>
   )
 }
